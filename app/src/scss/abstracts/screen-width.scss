@@ -1,0 +1,21 @@
+$screen-width: (
+  "small": 768px,
+  "medium": 992px,
+  "large": 1200px,
+);
+
+@media (min-width: map-get($map: $screen-width, $key: "small")) and (max-width: 991px) {
+  .conainer {
+    width: 95%;
+  }
+}
+@media (min-width: map-get($map: $screen-width, $key: "medium")) and (max-width: 1199px) {
+  .conainer {
+    width: 95%;
+  }
+}
+@media (min-width: map-get($map: $screen-width, $key: "large")) {
+  .conainer {
+    width: 1170px;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "clock-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "compile:sass": "sass app/src/scss/main.scss app/public/dist/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dart-sass": "^1.25.0",
+    "sass": "^1.54.5"
+  }
+}

@@ -1,0 +1,53 @@
+html {
+  font-size: 100%;
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+input,
+button {
+  display: block;
+  border: none;
+  background: none;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .conainer {
+    width: 95%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .conainer {
+    width: 95%;
+  }
+}
+@media (min-width: 1200px) {
+  .conainer {
+    width: 1170px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

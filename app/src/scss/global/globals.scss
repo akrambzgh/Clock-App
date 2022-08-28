@@ -1,0 +1,30 @@
+@use "../utils/font.scss";
+
+html {
+  font-size: 100%;
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: font.$font-family;
+}
+
+input,
+button {
+  display: block;
+  border: none;
+  background: none;
+  &:focus {
+    outline: none;
+  }
+}

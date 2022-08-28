@@ -1,0 +1,17 @@
+@mixin flex($jc, $al, $fd) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $al;
+  flex-direction: $fd;
+}
+@mixin imageDefaults($img-url) {
+  background-image: url($img-url);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+@mixin largeScreen() {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
