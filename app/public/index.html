@@ -5,11 +5,304 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clock App</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./dist/styles.css" />
 
     <script src="../src/js/app.js" defer></script>
   </head>
   <body>
-    <h1>Hello</h1>
+    <main>
+      <h1>CLOCK APP,FROM WHERE YOU ARE,WE CAN FIND YOU</h1>
+      <div class="container">
+        <div class="number-clock-box">
+          <div class="time-box">
+            <span class="hours">00</span>
+          </div>
+          <div class="time-box">
+            <span class="minutes">00</span>
+          </div>
+          <div class="time-box">
+            <span class="seconds">00</span>
+          </div>
+          <div class="time-box">
+            <span class="time">AM</span>
+          </div>
+        </div>
+        <div class="clock-box">
+          <div class="clock">
+            <div class="middle-circle"></div>
+            <h1 class="num-12">12</h1>
+            <h1 class="num-3">3</h1>
+            <h1 class="num-6">6</h1>
+            <h1 class="num-9">9</h1>
+            <div class="sec-arrow arrow">
+              <div class="arrow-up"></div>
+            </div>
+            <div class="min-arrow arrow">
+              <div class="arrow-up"></div>
+            </div>
+            <div class="hour-arrow arrow">
+              <div class="arrow-up"></div>
+            </div>
+          </div>
+        </div>
+        <div class="change-button">
+          <button class="edit-clock-btn">EDIT THE CLOCK</button>
+        </div>
+      </div>
+      <div class="edit-clock-box">
+        <div class="close-icon-container">
+          <span class="close-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 40 40"
+              enable-background="new 0 0 40 40"
+            >
+              <line
+                x1="15"
+                y1="15"
+                x2="25"
+                y2="25"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              ></line>
+              <line
+                x1="25"
+                y1="15"
+                x2="15"
+                y2="25"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              ></line>
+              <circle
+                class="circle"
+                cx="20"
+                cy="20"
+                r="19"
+                opacity="0"
+                stroke="#000"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                fill="none"
+              ></circle>
+              <path
+                d="M20 1c10.45 0 19 8.55 19 19s-8.55 19-19 19-19-8.55-19-19 8.55-19 19-19z"
+                class="progress"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                fill="none"
+              ></path>
+            </svg>
+          </span>
+        </div>
+        <div class="change-region">
+          <h3>CHANGE REGION</h3>
+        </div>
+        <div class="edit-clock-time">
+          <h3>EDIT CLOCK</h3>
+        </div>
+      </div>
+      <div class="regions">
+        <ul>
+          <li class="region" data-hrs="1">Paris</li>
+          <li class="region" data-hrs="1">Madrid</li>
+          <li class="region" data-hrs="7">Beijing</li>
+          <li class="region" data-hrs="1">Roma</li>
+          <li class="region" data-hrs="1">Berlin</li>
+          <li class="region" data-hrs="1">Qahira</li>
+          <li class="region" data-hrs="2">Riyadh</li>
+          <li class="region" data-hrs="3">Dubai</li>
+          <li class="region" data-hrs="2">Kuwait</li>
+          <li class="region" data-hrs="8">Tokyo</li>
+          <li class="region" data-hrs="8">Seoul</li>
+          <li class="region" data-hrs="2">Moscou</li>
+          <li class="region" data-hrs="2">Amman</li>
+          <li class="region" data-hrs="2">Doha</li>
+          <li class="region" data-hrs="1">Cape Town</li>
+        </ul>
+      </div>
+
+      <div class="edit-clock-time-box">
+        <div class="close-icon-container">
+          <span class="close-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 40 40"
+              enable-background="new 0 0 40 40"
+            >
+              <line
+                x1="15"
+                y1="15"
+                x2="25"
+                y2="25"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              ></line>
+              <line
+                x1="25"
+                y1="15"
+                x2="15"
+                y2="25"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+              ></line>
+              <circle
+                class="circle"
+                cx="20"
+                cy="20"
+                r="19"
+                opacity="0"
+                stroke="#000"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                fill="none"
+              ></circle>
+              <path
+                d="M20 1c10.45 0 19 8.55 19 19s-8.55 19-19 19-19-8.55-19-19 8.55-19 19-19z"
+                class="progress"
+                stroke="#fff"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                fill="none"
+              ></path>
+            </svg>
+          </span>
+        </div>
+        <div class="edit-hours">
+          <h1>Hours</h1>
+          <label class="field">
+            <span class="icon pencil-icon">
+              <svg
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 20h9"></path>
+                <path
+                  id="pencil"
+                  class="pencil"
+                  d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                ></path>
+              </svg>
+            </span>
+            <input
+              id="input"
+              class="input hours-input"
+              type="text"
+              maxlength="2"
+              placeholder="Write anything"
+            />
+            <span id="eraser" class="icon eraser">
+              <svg
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </span>
+          </label>
+        </div>
+        <div class="edit-minutes">
+          <h1>Minutes</h1>
+          <label class="field">
+            <span class="icon pencil-icon">
+              <svg
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 20h9"></path>
+                <path
+                  id="pencil"
+                  class="pencil"
+                  d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                ></path>
+              </svg>
+            </span>
+            <input
+              id="input"
+              class="input minutes-input"
+              type="text"
+              maxlength="2"
+              placeholder="Write anything"
+            />
+            <span id="eraser" class="icon eraser">
+              <svg
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </span>
+          </label>
+        </div>
+        <div class="submit">
+          <button class="submit-button">Submit Changes</button>
+        </div>
+      </div>
+    </main>
+    <div class="overlayer"></div>
+    <div class="alert">
+      <div class="alert-icon">
+        <img
+          src="../../images/warning.png"
+          alt="Alert Icon 2221591"
+          class="styles__Image-sc-2erpfv-1 gbnltd"
+        />
+      </div>
+      <div class="alert-text">
+        <h1>Somethinge Went Wrong!</h1>
+      </div>
+      <button class="close-alert">OK</button>
+    </div>
   </body>
 </html>

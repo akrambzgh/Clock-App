@@ -1,0 +1,54 @@
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+@use "../utils/vars.scss" as vars;
+
+.close-icon-container {
+  padding: 40px;
+  user-select: none;
+  @include mix.position(absolute, -15px, 80%);
+  @media (max-width: 767px) {
+    @include mix.position(absolute, -30px, 75%);
+  }
+  .close-icon {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    stroke: map-get($map: vars.$colors, $key: "white");
+    .circle {
+      opacity: 0.1;
+    }
+    .progress {
+      opacity: 0;
+      stroke-dasharray: 0, 120;
+      transition: 0.5s cubic-bezier(0.165, 0.775, 0.145, 1.02);
+    }
+  }
+  &:hover {
+    .close-icon {
+      .progress {
+        opacity: 1;
+        stroke-dasharray: 25, 120;
+      }
+    }
+  }
+  .close-icon {
+    &:hover {
+      .progress {
+        opacity: 1;
+        stroke-dasharray: 120, 120;
+      }
+    }
+    &:active,
+    &.clicked {
+      .progress {
+        stroke-dasharray: 160, 160;
+      }
+    }
+    &.clicked {
+      .progress {
+        opacity: 1;
+      }
+    }
+  }
+}

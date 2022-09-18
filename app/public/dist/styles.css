@@ -18,6 +18,23 @@ body {
   font-family: "Space Grotesk", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(53deg, 62%, 84%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 input,
 button {
   display: block;
@@ -27,6 +44,24 @@ button {
 input:focus,
 button:focus {
   outline: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
 }
 
 .container {
@@ -48,6 +83,567 @@ button:focus {
   .conainer {
     width: 1170px;
   }
+}
+.edit-clock-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  background-color: hsl(53deg, 62%, 84%);
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 15px;
+  border: 2px solid;
+  opacity: 0;
+  visibility: hidden;
+  transition: 500ms;
+}
+@media (max-width: 767px) {
+  .edit-clock-box {
+    width: 98%;
+    height: 400px;
+  }
+}
+.edit-clock-box.show {
+  opacity: 1;
+  visibility: visible;
+}
+.edit-clock-box .change-region,
+.edit-clock-box .edit-clock-time {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  background-color: hsl(0deg, 0%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border: 2px solid;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  transition: 500ms;
+}
+@media (max-width: 767px) {
+  .edit-clock-box .change-region,
+.edit-clock-box .edit-clock-time {
+    width: 150px;
+    height: 150px;
+  }
+}
+.edit-clock-box .change-region:hover,
+.edit-clock-box .edit-clock-time:hover {
+  background-color: hsl(180deg, 76%, 51%);
+}
+.edit-clock-box .change-region:hover h3,
+.edit-clock-box .edit-clock-time:hover h3 {
+  color: hsl(0deg, 0%, 100%);
+}
+.edit-clock-box .change-region h3,
+.edit-clock-box .edit-clock-time h3 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  transition: 500ms;
+}
+
+button {
+  border-radius: 30px;
+  background-color: hsl(180deg, 76%, 51%);
+  color: hsl(0deg, 0%, 100%);
+  padding-block: 10px;
+  transition: 500ms;
+  font-size: 20px;
+  border: 5px solid hsl(180deg, 76%, 51%);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+button:hover {
+  background: hsl(0deg, 0%, 100%);
+  color: hsl(0deg, 0%, 0%);
+}
+button.edit-clock-btn, button.submit-button, button.close-alert {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  width: 90%;
+}
+button.edit-clock-btn {
+  top: 90%;
+}
+button.submit-button {
+  top: 85%;
+}
+button.close-alert {
+  top: 85%;
+}
+
+.overlayer {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: 500ms;
+}
+.overlayer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.close-icon-container {
+  padding: 40px;
+  user-select: none;
+  position: absolute;
+  top: -15px;
+  left: 80%;
+}
+@media (max-width: 767px) {
+  .close-icon-container {
+    position: absolute;
+    top: -30px;
+    left: 75%;
+  }
+}
+.close-icon-container .close-icon {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  stroke: hsl(0deg, 0%, 100%);
+}
+.close-icon-container .close-icon .circle {
+  opacity: 0.1;
+}
+.close-icon-container .close-icon .progress {
+  opacity: 0;
+  stroke-dasharray: 0, 120;
+  transition: 0.5s cubic-bezier(0.165, 0.775, 0.145, 1.02);
+}
+.close-icon-container:hover .close-icon .progress {
+  opacity: 1;
+  stroke-dasharray: 25, 120;
+}
+.close-icon-container .close-icon:hover .progress {
+  opacity: 1;
+  stroke-dasharray: 120, 120;
+}
+.close-icon-container .close-icon:active .progress, .close-icon-container .close-icon.clicked .progress {
+  stroke-dasharray: 160, 160;
+}
+.close-icon-container .close-icon.clicked .progress {
+  opacity: 1;
+}
+
+.alert {
+  width: 31.25em;
+  height: 31.25em;
+  text-align: center;
+  padding: 1.25em 0.9375em;
+  border: 0.3125em solid hsl(0deg, 0%, 0%);
+  border-radius: 15px;
+  background-color: hsl(0deg, 0%, 100%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 7;
+  transition: 500ms;
+  opacity: 0;
+  visibility: hidden;
+}
+.alert.show {
+  opacity: 1;
+  visibility: visible;
+}
+.alert .alert-icon {
+  width: 12.5em;
+  height: 12.5em;
+  position: absolute;
+  top: 1.25em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.alert .alert-icon img {
+  width: 100%;
+  height: 100%;
+}
+.alert .alert-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 100%;
+}
+.alert .alert-text h1 {
+  color: hsl(4deg, 90%, 58%);
+}
+
+main {
+  background-color: hsl(53deg, 62%, 84%);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main > h1 {
+  font-size: 2.5em;
+  letter-spacing: 0.09375em;
+  font-family: "Qwitcher Grypen", cursive;
+  font-weight: 300;
+  text-align: center;
+  color: hsl(0deg, 0%, 0%);
+}
+@media (max-width: 47.9375em) {
+  main > h1 {
+    font-size: 1.25em;
+  }
+}
+main .container {
+  width: 95%;
+  height: 90%;
+  background-color: hsl(0deg, 0%, 100%);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+main .container .number-clock-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background-color: hsl(53deg, 62%, 84%);
+  width: 90%;
+  border-radius: 15px;
+  border: 0.125em solid;
+  margin-block: 0.9375em;
+}
+main .container .number-clock-box .time-box {
+  border-left: 0.125em solid;
+  border-right: 0.125em solid;
+  width: 20%;
+  height: 100%;
+  padding: 0.625em 0;
+  text-align: center;
+}
+main .container .number-clock-box .time-box:first-child {
+  border-left: none;
+}
+main .container .number-clock-box .time-box:last-child {
+  border-right: none;
+}
+main .container .number-clock-box .time-box span {
+  font-size: 2.1875em;
+  letter-spacing: 0.125em;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: hsl(0deg, 0%, 0%);
+}
+main .container .clock-box {
+  background-color: hsl(53deg, 62%, 84%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 31.25em;
+  height: 31.25em;
+  border-radius: 15px;
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box {
+    width: 21.875em;
+    height: 21.875em;
+  }
+}
+main .container .clock-box .clock {
+  position: relative;
+  width: 28.125em;
+  height: 28.125em;
+  border-radius: 50%;
+  background-color: hsl(0deg, 0%, 100%);
+  border: 0.625em solid hsl(245deg, 76%, 50%);
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock {
+    width: 18.75em;
+    height: 18.75em;
+  }
+}
+main .container .clock-box .clock .middle-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 50%;
+  background-color: hsl(53deg, 62%, 84%);
+}
+main .container .clock-box .clock h1 {
+  position: absolute;
+  font-size: 2.8125em;
+  font-weight: 400;
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock h1 {
+    font-size: 1.875em;
+  }
+}
+main .container .clock-box .clock h1.num-12, main .container .clock-box .clock h1.num-6 {
+  left: 50%;
+  transform: translateX(-50%);
+}
+main .container .clock-box .clock h1.num-3, main .container .clock-box .clock h1.num-9 {
+  top: 50%;
+  transform: translateY(-50%);
+}
+main .container .clock-box .clock h1.num-3 {
+  right: 0.625em;
+}
+main .container .clock-box .clock h1.num-6 {
+  bottom: 0em;
+}
+main .container .clock-box .clock h1.num-9 {
+  left: 0.625em;
+}
+main .container .clock-box .clock .arrow {
+  width: 0.625em;
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  transition: 500ms;
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock .arrow {
+    width: 0.3125em;
+  }
+}
+main .container .clock-box .clock .arrow .arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 1.875em solid transparent;
+  border-right: 1.875em solid transparent;
+  border-bottom: 1.875em solid;
+  position: absolute;
+  top: -2%;
+  left: -250%;
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock .arrow .arrow-up {
+    left: -350%;
+    border-left-width: 1.25em;
+    border-right-width: 1.25em;
+    border-bottom-width: 1.25em;
+  }
+}
+main .container .clock-box .clock .arrow.sec-arrow {
+  top: 13%;
+  height: 10em;
+  z-index: 4;
+  background-color: hsl(245deg, 76%, 50%);
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock .arrow.sec-arrow {
+    top: 11%;
+    left: 49%;
+    height: 6.875em;
+  }
+}
+main .container .clock-box .clock .arrow.sec-arrow .arrow-up {
+  border-bottom-color: hsl(245deg, 76%, 50%);
+}
+main .container .clock-box .clock .arrow.min-arrow {
+  height: 9.625em;
+  top: 15%;
+  z-index: 3;
+  background-color: hsl(180deg, 76%, 51%);
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock .arrow.min-arrow {
+    height: 6.5em;
+  }
+}
+main .container .clock-box .clock .arrow.min-arrow .arrow-up {
+  border-bottom-color: hsl(180deg, 76%, 51%);
+}
+main .container .clock-box .clock .arrow.hour-arrow {
+  top: 23%;
+  height: 7.5em;
+  background-color: hsl(0deg, 0%, 0%);
+  z-index: 2;
+}
+@media (max-width: 47.9375em) {
+  main .container .clock-box .clock .arrow.hour-arrow {
+    height: 4.375em;
+  }
+}
+main .container .clock-box .clock .arrow.hour-arrow .arrow-up {
+  border-bottom-color: hsl(0deg, 0%, 0%);
+}
+main .regions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background-color: hsl(53deg, 62%, 84%);
+  width: 31.25em;
+  height: 31.25em;
+  overflow-y: scroll;
+  border-radius: 15px;
+  border: 0.3125em solid hsl(245deg, 76%, 50%);
+  transition: 500ms;
+  opacity: 0;
+  visibility: hidden;
+}
+@media (max-width: 47.9375em) {
+  main .regions {
+    width: 98%;
+    height: 25em;
+  }
+}
+main .regions.show {
+  opacity: 1;
+  visibility: visible;
+}
+main .regions ul li {
+  position: relative;
+  padding-block: 0.9375em;
+  color: hsl(0deg, 0%, 0%);
+  color: white;
+  font-size: 1.125em;
+  font-weight: 400;
+  letter-spacing: 0.125em;
+  border-bottom: 0.0625em solid hsl(0deg, 0%, 0%);
+  padding-left: 1.5625em;
+  cursor: pointer;
+  user-select: none;
+  transition: 500ms;
+}
+main .regions ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsl(0deg, 0%, 0%);
+  width: 0%;
+  height: 100%;
+  z-index: -1;
+  transition: 500ms;
+}
+main .regions ul li.current-region {
+  background-color: hsl(245deg, 76%, 50%);
+}
+main .regions ul li.current-region::before {
+  height: 0;
+}
+main .regions ul li:hover::before {
+  width: 100%;
+}
+main .edit-clock-time-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  background-color: hsl(53deg, 62%, 84%);
+  width: 31.25em;
+  height: 31.25em;
+  padding: 1.5625em;
+  border-radius: 15px;
+  border: 0.3125em solid hsl(0deg, 0%, 0%);
+  transition: 500ms;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
+@media (max-width: 47.9375em) {
+  main .edit-clock-time-box {
+    width: 98%;
+    height: 28.125em;
+  }
+}
+main .edit-clock-time-box.show {
+  opacity: 1;
+  visibility: visible;
+}
+main .edit-clock-time-box .edit-hours h1,
+main .edit-clock-time-box .edit-minutes h1 {
+  font-size: 2.8125em;
+  font-weight: 600;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+  margin-bottom: 1.25em;
+}
+main .edit-clock-time-box .edit-hours .field,
+main .edit-clock-time-box .edit-minutes .field {
+  max-width: 28.125em;
+  width: 28.125em;
+  height: 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 3em;
+  background: #fff;
+}
+@media (max-width: 47.9375em) {
+  main .edit-clock-time-box .edit-hours .field,
+main .edit-clock-time-box .edit-minutes .field {
+    width: 100%;
+  }
+}
+main .edit-clock-time-box .edit-hours .field .input,
+main .edit-clock-time-box .edit-minutes .field .input {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  outline: none;
+  border: none;
+  background: transparent;
+  transition: all ease 0.25s;
+}
+main .edit-clock-time-box .edit-hours .field .input:placeholder-shown ~ .eraser,
+main .edit-clock-time-box .edit-minutes .field .input:placeholder-shown ~ .eraser {
+  opacity: 0;
+  transform: rotate(360deg);
+}
+main .edit-clock-time-box .edit-hours .field .input:read-only,
+main .edit-clock-time-box .edit-minutes .field .input:read-only {
+  color: #888;
+}
+main .edit-clock-time-box .edit-hours .field .pencil-icon .pencil,
+main .edit-clock-time-box .edit-minutes .field .pencil-icon .pencil {
+  transform-origin: 0% 100%;
+}
+main .edit-clock-time-box .edit-hours .field .eraser,
+main .edit-clock-time-box .edit-minutes .field .eraser {
+  cursor: pointer;
+  color: #aaa;
+  transition: all ease 0.25s;
+}
+main .edit-clock-time-box .edit-hours {
+  margin-bottom: 1.875em;
 }
 
 /*# sourceMappingURL=styles.css.map */

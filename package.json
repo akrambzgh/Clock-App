@@ -2,15 +2,23 @@
   "name": "clock-app",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "index.js",
   "scripts": {
-    "compile:sass": "sass app/src/scss/main.scss app/public/dist/styles.css"
+    "compile:sass": "sass app/src/scss/main.scss app/public/dist/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrambzgh/Clock-App.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrambzgh/Clock-App/issues"
+  },
+  "homepage": "https://github.com/akrambzgh/Clock-App#readme",
   "dependencies": {
     "dart-sass": "^1.25.0",
-    "sass": "^1.54.5"
+    "sass": "^1.54.8"
   }
 }

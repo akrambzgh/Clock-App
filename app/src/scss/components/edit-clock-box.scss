@@ -1,0 +1,56 @@
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+@use "../utils/vars.scss" as vars;
+
+.edit-clock-box {
+  @include mix.position(absolute, 50%, 50%);
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  background-color: map-get($map: vars.$colors, $key: "accentColor");
+  width: 500px;
+  height: 500px;
+  @media (max-width: 767px) {
+    width: 98%;
+    height: 400px;
+  }
+  @include mix.flex(space-evenly, center, row);
+  border-radius: vars.$smallBorderRadius;
+  border: 2px solid map-get($map: vars.$colors, $key: "textClolor");
+  opacity: 0;
+  visibility: hidden;
+  transition: vars.$transitioDuaration;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .change-region,
+  .edit-clock-time {
+    width: 200px;
+    height: 200px;
+    @media (max-width: 767px) {
+      width: 150px;
+      height: 150px;
+    }
+    border-radius: vars.$smallBorderRadius;
+    background-color: map-get($map: vars.$colors, $key: "white");
+    @include mix.flex(center, center, row);
+    border: 2px solid map-get($map: vars.$colors, $key: "textClolor");
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    transition: vars.$transitioDuaration;
+    &:hover {
+      background-color: map-get($map: vars.$colors, $key: "lightBlue");
+      h3 {
+        color: map-get($map: vars.$colors, $key: "white");
+      }
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: map-get($map: vars.$colors, $key: "textClolor");
+      transition: vars.$transitioDuaration;
+    }
+  }
+}

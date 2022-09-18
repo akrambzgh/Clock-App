@@ -1,0 +1,36 @@
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+@use "../utils/vars.scss" as vars;
+
+button {
+  border-radius: vars.$bigBorderRadius;
+  background-color: map-get($map: vars.$colors, $key: "lightBlue");
+  color: map-get($map: vars.$colors, $key: "white");
+  padding-block: 10px;
+  transition: vars.$transitioDuaration;
+  font-size: 20px;
+  border: 5px solid map-get($map: vars.$colors, $key: "lightBlue");
+  font-weight: 600;
+  letter-spacing: 2px;
+  &:hover {
+    background: map-get($map: vars.$colors, $key: "white");
+    color: map-get($map: vars.$colors, $key: "textColor");
+  }
+  &.edit-clock-btn,
+  &.submit-button,
+  &.close-alert {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    width: 90%;
+  }
+  &.edit-clock-btn {
+    top: 90%;
+  }
+  &.submit-button {
+    top: 85%;
+  }
+  &.close-alert {
+    top: 85%;
+  }
+}

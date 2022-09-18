@@ -1,0 +1,41 @@
+@use "../abstracts/function.scss" as fun;
+@use "../abstracts/mixins.scss" as mix;
+@use "../utils/vars.scss" as vars;
+
+.alert {
+  width: fun.em(500);
+  height: fun.em(500);
+  text-align: center;
+  padding: fun.em(20) fun.em(15);
+  border: fun.em(5) solid map-get($map: vars.$colors, $key: "textColor");
+  border-radius: vars.$smallBorderRadius;
+  background-color: map-get($map: vars.$colors, $key: "white");
+  @include mix.position(absolute, 50%, 50%);
+  translate: -50% -50%;
+  z-index: 7;
+  transition: vars.$transitioDuaration;
+  opacity: 0;
+  visibility: hidden;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .alert-icon {
+    width: fun.em(200);
+    height: fun.em(200);
+    @include mix.position(absolute, fun.em(20), 50%);
+    transform: translateX(-50%);
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .alert-text {
+    @include mix.position(absolute, 50%, 50%);
+    translate: -50% -50%;
+    width: 100%;
+    h1 {
+      color: map-get($map: vars.$colors, $key: "errorColor");
+    }
+  }
+}

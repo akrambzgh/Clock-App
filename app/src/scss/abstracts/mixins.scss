@@ -15,3 +15,9 @@
     @content;
   }
 }
+
+@mixin position($ps, $tp, $lf) {
+  position: $ps;
+  top: $tp;
+  left: $lf;
+}

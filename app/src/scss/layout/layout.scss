@@ -1,3 +1,341 @@
 @use "../abstracts/function.scss" as fun;
 @use "../abstracts/mixins.scss" as mix;
 @use "../utils/vars.scss" as vars;
+
+main {
+  background-color: map-get($map: vars.$colors, $key: "accentColor");
+  width: 100%;
+  height: 100vh;
+  @include mix.flex(center, center, column);
+  & > h1 {
+    font-size: fun.em(40);
+    @media (max-width: fun.em(767)) {
+      font-size: fun.em(20);
+    }
+    letter-spacing: fun.em(1.5);
+    font-family: "Qwitcher Grypen", cursive;
+    font-weight: 300;
+    text-align: center;
+    color: map-get($map: vars.$colors, $key: "textColor");
+  }
+  .container {
+    width: 95%;
+    height: 90%;
+    background-color: map-get($map: vars.$colors, $key: "white");
+    border-top-left-radius: vars.$smallBorderRadius;
+    border-top-right-radius: vars.$smallBorderRadius;
+    @include mix.flex(start, center, column);
+    .number-clock-box {
+      @include mix.flex(space-between, center, row);
+      background-color: map-get($map: vars.$colors, $key: "accentColor");
+      width: 90%;
+      border-radius: vars.$smallBorderRadius;
+      border: fun.em(2) solid map-get($map: vars.$colors, $key: "textClolor");
+      margin-block: fun.em(15);
+      .time-box {
+        border-left: fun.em(2) solid
+          map-get($map: vars.$colors, $key: "textClolor");
+        border-right: fun.em(2) solid
+          map-get($map: vars.$colors, $key: "textClolor");
+        width: calc(100% / 5);
+        height: 100%;
+        padding: fun.em(10) 0;
+        text-align: center;
+        &:first-child {
+          border-left: none;
+        }
+        &:last-child {
+          border-right: none;
+        }
+        span {
+          font-size: fun.em(35);
+          letter-spacing: fun.em(2);
+          font-weight: bold;
+          margin-bottom: 0;
+          color: map-get($map: vars.$colors, $key: "textColor");
+        }
+      }
+    }
+    .clock-box {
+      background-color: map-get($map: vars.$colors, $key: "accentColor");
+      @include mix.flex(center, center, row);
+      width: fun.em(500);
+      height: fun.em(500);
+      @media (max-width: fun.em(767)) {
+        width: fun.em(350);
+        height: fun.em(350);
+      }
+      border-radius: vars.$smallBorderRadius;
+      .clock {
+        position: relative;
+        width: fun.em(450);
+        height: fun.em(450);
+        @media (max-width: fun.em(767)) {
+          width: fun.em(300);
+          height: fun.em(300);
+        }
+        border-radius: 50%;
+        background-color: map-get($map: vars.$colors, $key: "white");
+        border: fun.em(10) solid
+          map-get($map: vars.$colors, $key: "secondryColor");
+        .middle-circle {
+          @include mix.position(absolute, 50%, 50%);
+          transform: translate(-50%, -50%);
+          width: fun.em(20);
+          height: fun.em(20);
+          border-radius: 50%;
+          background-color: map-get($map: vars.$colors, $key: "accentColor");
+        }
+        h1 {
+          position: absolute;
+          font-size: fun.em(45);
+          @media (max-width: fun.em(767)) {
+            font-size: fun.em(30);
+          }
+          color: map-get($map: vars.$colors, $key: "textClolor");
+          font-weight: 400;
+          &.num-12,
+          &.num-6 {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          &.num-3,
+          &.num-9 {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          &.num-3 {
+            right: fun.em(10);
+          }
+          &.num-6 {
+            bottom: fun.em(0);
+          }
+          &.num-9 {
+            left: fun.em(10);
+          }
+        }
+        .arrow {
+          width: fun.em(10);
+          @media (max-width: fun.em(767)) {
+            width: fun.em(5);
+          }
+          border-radius: vars.$bigBorderRadius;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          transform-origin: bottom;
+          transition: vars.$transitioDuaration;
+          .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: fun.em(30) solid transparent;
+            border-right: fun.em(30) solid transparent;
+            border-bottom: fun.em(30) solid;
+            @include mix.position(absolute, -2%, -250%);
+            @media (max-width: fun.em(767)) {
+              left: -350%;
+              border-left-width: fun.em(20);
+              border-right-width: fun.em(20);
+              border-bottom-width: fun.em(20);
+            }
+          }
+          &.sec-arrow {
+            top: 13%;
+            height: fun.em(160);
+            @media (max-width: fun.em(767)) {
+              top: 11%;
+              left: 49%;
+              height: fun.em(110);
+            }
+            z-index: 4;
+            background-color: map-get(
+              $map: vars.$colors,
+              $key: "secondryColor"
+            );
+            .arrow-up {
+              border-bottom-color: map-get(
+                $map: vars.$colors,
+                $key: "secondryColor"
+              );
+            }
+          }
+          &.min-arrow {
+            height: fun.em(154);
+            top: 15%;
+            z-index: 3;
+            background-color: map-get($map: vars.$colors, $key: "lightBlue");
+            @media (max-width: fun.em(767)) {
+              height: fun.em(104);
+            }
+            .arrow-up {
+              border-bottom-color: map-get(
+                $map: vars.$colors,
+                $key: "lightBlue"
+              );
+            }
+          }
+          &.hour-arrow {
+            top: 23%;
+            height: fun.em(120);
+            @media (max-width: fun.em(767)) {
+              height: fun.em(70);
+            }
+            background-color: map-get($map: vars.$colors, $key: "textColor");
+            z-index: 2;
+            .arrow-up {
+              border-bottom-color: map-get(
+                $map: vars.$colors,
+                $key: "textColor"
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+  .regions {
+    @include mix.position(absolute, 50%, 50%);
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-color: map-get($map: vars.$colors, $key: "accentColor");
+    width: fun.em(500);
+    height: fun.em(500);
+    overflow-y: scroll;
+    border-radius: vars.$smallBorderRadius;
+    border: fun.em(5) solid map-get($map: vars.$colors, $key: "secondryColor");
+    transition: vars.$transitioDuaration;
+    opacity: 0;
+    visibility: hidden;
+    @media (max-width: fun.em(767)) {
+      width: 98%;
+      height: fun.em(400);
+    }
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    ul li {
+      position: relative;
+      padding-block: fun.em(15);
+      color: map-get($map: vars.$colors, $key: "textColor");
+      color: white;
+      font-size: fun.em(18);
+      font-weight: 400;
+      letter-spacing: fun.em(2);
+      border-bottom: fun.em(1) solid
+        map-get($map: vars.$colors, $key: "textColor");
+      padding-left: fun.em(25);
+      cursor: pointer;
+      user-select: none;
+      transition: vars.$transitioDuaration;
+      &::before {
+        content: "";
+        @include mix.position(absolute, 0, 0);
+        background-color: map-get($map: vars.$colors, $key: "textColor");
+        width: 0%;
+        height: 100%;
+        z-index: -1;
+        transition: vars.$transitioDuaration;
+      }
+      &.current-region {
+        background-color: map-get($map: vars.$colors, $key: "secondryColor");
+        &::before {
+          height: 0;
+        }
+      }
+      &:hover {
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .edit-clock-time-box {
+    @include mix.position(absolute, 50%, 50%);
+    @include mix.flex(stretch, center, column);
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    background-color: map-get($map: vars.$colors, $key: "accentColor");
+    width: fun.em(500);
+    height: fun.em(500);
+    @media (max-width: fun.em(767)) {
+      width: 98%;
+      height: fun.em(450);
+    }
+    padding: fun.em(25);
+    border-radius: vars.$smallBorderRadius;
+    border: fun.em(5) solid map-get($map: vars.$colors, $key: "textColor");
+    transition: vars.$transitioDuaration;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .edit-hours,
+    .edit-minutes {
+      h1 {
+        font-size: fun.em(45);
+        font-weight: 600;
+        letter-spacing: fun.em(2);
+        text-transform: uppercase;
+        margin-bottom: fun.em(20);
+      }
+      .field {
+        max-width: fun.em(450);
+        width: fun.em(450);
+        height: fun.em(48);
+        @media (max-width: fun.em(767)) {
+          width: 100%;
+        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 1em;
+        border-radius: fun.em(48);
+
+        background: #fff;
+
+        .input {
+          width: 100%;
+          height: 100%;
+
+          padding: 1em;
+
+          outline: none;
+          border: none;
+
+          background: transparent;
+          transition: all ease 0.25s;
+
+          &:placeholder-shown {
+            ~ .eraser {
+              opacity: 0;
+              transform: rotate(360deg);
+            }
+          }
+          &:read-only {
+            color: #888;
+          }
+        }
+
+        .pencil-icon {
+          .pencil {
+            transform-origin: 0% 100%;
+          }
+        }
+
+        .eraser {
+          cursor: pointer;
+          color: #aaa;
+          transition: all ease 0.25s;
+        }
+      }
+    }
+    .edit-hours {
+      margin-bottom: fun.em(30);
+    }
+  }
+}
